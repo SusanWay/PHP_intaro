@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book index{% endblock %}
+
+{% block body %}
+
+<div class="bg-secondary bg-opacity-25 pb-5">
+    <div class="container">
+        <div class="row row-cols-md-4 g-1 p-2" >
+
+            {% for book in books %}
+
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <div class="card-header">
+                        <img src="{{ book.picture }}" class="card-img-top" alt="..." style="object-fit: cover; object-position: center;height: 27vw;">
+                    </div>
+
+                    <div class="card-body">
+                        <div>
+                            <h5 class="card-title">{{ book.name }}</h5>
+                            <small class="text-muted">{{ book.dateAdd ? book.dateAdd|date('Y-m-d H:i:s') : '' }}</small>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start card-footer">
+
+                        <a href="{{ book.content }}" class="col-6 col-md-12 col-xl-6 ml-auto mb-md-1 mb-xl-0">
+                            <button type="button" class="btn btn-outline-dark">Читать</button>
+                        </a>
+                        {% if app.user  and app.user == book.user %}
+                            <a href="{{ path('app_book_edit', {'id': book.id}) }}" class="col-6 col-md-12 col-xl-6">
+                                <button type="button" class="btn btn-outline-dark">Редактировать</button>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

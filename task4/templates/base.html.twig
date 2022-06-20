@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+    </head>
+    <body class="d-flex flex-column h-100">
+    <header class="p-3 bg-dark text-whitemb-4 ">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a class="navbar-brand" href="{{ path('app_book_index') }}">
+                    <img src="https://dummyimage.com/300x100/212529/ffffff&text=Book"  height="40" alt="" loading="lazy">
+                </a>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+
+                </ul>
+
+
+
+
+                {% if app.user %}
+                    <div class="d-flex">
+                        <div class="nav d-flex col-12 col-lg-auto justify-content-center mb-2 mb-lg-0">
+                            <p class="text-white fs-6 m-auto me-2 text-start">
+                                Здравствуйте {{ app.user.username}}
+                            </p>
+                            <a href="{{ path('app_book_new') }}" class="m-auto">
+                                <button type="button" class="btn btn-warning  me-2" >Добовить книгу</button>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    </form>
+
+                    <div class="text-end">
+                        <div class="col-auto">
+                            <a href="{{ path('app_logout') }}">
+                                <button type="button" class="btn btn-outline-light mt-auto" >Выйти</button>
+                            </a>
+                        </div>
+                    </div>
+
+                {% else %}
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    </form>
+                    <div class="text-end">
+                        <div class="d-flex">
+                            <a href=" {{ path('app_login') }}">
+                                <button type="button"  class="btn btn-outline-light me-2">Войти</button>
+                            </a>
+                            <a href="{{ path('app_register') }}">
+                                <button type="button" class="btn btn-warning ">Зарегистрироваться</button>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </header>
+    {% block body %}{% endblock %}
+
+
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <p class="text-muted text-center">© 2022 ПМ-19 Заев</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+</html>

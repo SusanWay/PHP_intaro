@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Book{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Редактировать книгу</h1>
+
+    {{ include('book/_form.html.twig', {'button_label': 'Изменить'}) }}
+
+    <a href="{{ path('app_book_index') }}"><button type="button" class="btn btn-dark mb-3">На главную</button></a>
+
+    {{ include('book/_delete_form.html.twig') }}
+</div>
+{% endblock %}

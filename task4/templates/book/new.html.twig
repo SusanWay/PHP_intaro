@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Book{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Добавить книгу</h1>
+
+    {{ include('book/_form.html.twig') }}
+
+    <a href="{{ path('app_book_index') }}"><button type="button" class="btn btn-dark mb-3">На главную</button></a>
+
+</div>
+{% endblock %}
